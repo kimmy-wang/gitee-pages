@@ -1,0 +1,21 @@
+CI/CD:
+  - .github/workflows/*
+
+dependencies:
+  - .nvmrc
+  - package.json
+  - yarn.lock
+  - package-lock.json
+
+documentation:
+  - README.md
+
+test:
+  - __tests__
+
+docker:
+  - .devcontainer/*
+  - .dockerignore
+  - Dockerfile
+  - Makefile
+  - docker-compose.yml
