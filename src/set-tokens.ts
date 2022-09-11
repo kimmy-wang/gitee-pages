@@ -32,7 +32,7 @@ ${
   core.info(`[INFO] wrote ${knownHosts}`);
   await exec.exec('chmod', ['600', knownHosts]);
 
-  const idRSA = path.join(sshDir, 'github');
+  const idRSA = path.join(sshDir, 'gitee');
   fs.writeFileSync(idRSA, inps.DeployKey + '\n');
   core.info(`[INFO] wrote ${idRSA}`);
   await exec.exec('chmod', ['600', idRSA]);
@@ -41,7 +41,7 @@ ${
   const sshConfigContent = `\
 Host ${getServerUrl().host}
     HostName ${getServerUrl().host}
-    IdentityFile ~/.ssh/github
+    IdentityFile ~/.ssh/gitee
     User git
 `;
   fs.writeFileSync(sshConfigPath, sshConfigContent + '\n');
@@ -67,6 +67,7 @@ Watch https://github.com/peaceiris/actions-gh-pages/issues/87
 }
 
 export function setGiteeToken(
+  userName: string,
   githubToken: string,
   publishRepo: string,
   publishBranch: string,
@@ -97,12 +98,16 @@ This operation is prohibited to protect your contents
     }
   }
 
-  return `https://x-access-token:${githubToken}@${getServerUrl().host}/${publishRepo}.git`;
+  return `https://${userName}:${githubToken}@${getServerUrl().host}/${publishRepo}.git`;
 }
 
-export function setPersonalToken(personalToken: string, publishRepo: string): string {
+export function setPersonalToken(
+  userName: string,
+  personalToken: string,
+  publishRepo: string
+): string {
   core.info('[INFO] setup personal access token');
-  return `https://x-access-token:${personalToken}@${getServerUrl().host}/${publishRepo}.git`;
+  return `https://${userName}:${personalToken}@${getServerUrl().host}/${publishRepo}.git`;
 }
 
 export function getPublishRepo(externalRepository: string, owner: string, repo: string): string {
@@ -126,6 +131,7 @@ export async function setTokens(inps: Inputs): Promise<string> {
       const ref = context.ref;
       const eventName = context.eventName;
       return setGiteeToken(
+        inps.UserName,
         inps.GiteeToken,
         publishRepo,
         inps.PublishBranch,
@@ -134,7 +140,7 @@ export async function setTokens(inps: Inputs): Promise<string> {
         eventName
       );
     } else if (inps.PersonalToken) {
-      return setPersonalToken(inps.PersonalToken, publishRepo);
+      return setPersonalToken(inps.UserName, inps.PersonalToken, publishRepo);
     } else {
       throw new Error('not found deploy key or tokens');
     }

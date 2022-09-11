@@ -106,14 +106,15 @@ jobs:
         uses: ./
         with:
           # deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          gitee_token: ${{ secrets.GITEE_TOKEN }}
+          external_repository: upcwangying/gitee-pages
+          personal_token: ${{ secrets.GITEE_TOKEN }}
           # publish_branch: gh-pages
           publish_dir: ./test_projects/mdbook/book
           # external_repository: ''
           allow_empty_commit: true
           # keep_files: true
           # force_orphan: true
-          user_name: 'github-actions[bot]'
+          user_name: 'upcwangying'
           user_email: 'github-actions[bot]@users.noreply.github.com'
           # commit_message: ${{ github.event.head_commit.message }}
           cname: 'gitee-pages.kimmy.me'
@@ -125,7 +126,8 @@ jobs:
         uses: ./
         with:
 #          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          gitee_token: ${{ secrets.GITEE_TOKEN }}
+          external_repository: upcwangying/gitee-pages
+          personal_token: ${{ secrets.GITEE_TOKEN }}
           # personal_token: ${{ secrets.PERSONAL_TOKEN }}
           publish_branch: gh-pages-macos
           publish_dir: ./test_projects/mdbook/book
@@ -133,7 +135,7 @@ jobs:
           allow_empty_commit: true
           # keep_files: true
           # force_orphan: true
-          user_name: 'github-actions[bot]'
+          user_name: 'upcwangying'
           user_email: 'github-actions[bot]@users.noreply.github.com'
           # commit_message: ${{ github.event.head_commit.message }}
 
@@ -144,7 +146,8 @@ jobs:
         uses: ./
         with:
           # deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          gitee_token: ${{ secrets.GITEE_TOKEN }}
+          external_repository: upcwangying/gitee-pages
+          personal_token: ${{ secrets.GITEE_TOKEN }}
           # personal_token: ${{ secrets.PERSONAL_TOKEN }}
           publish_branch: gh-pages-windows
           publish_dir: ./test_projects/mdbook/book
@@ -152,7 +155,7 @@ jobs:
           allow_empty_commit: true
           # keep_files: true
           # force_orphan: true
-          user_name: 'github-actions[bot]'
+          user_name: 'upcwangying'
           user_email: 'github-actions[bot]@users.noreply.github.com'
           # commit_message: ${{ github.event.head_commit.message }}
 
@@ -163,14 +166,15 @@ jobs:
         uses: ./
         with:
           # deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          gitee_token: ${{ secrets.GITEE_TOKEN }}
+          external_repository: upcwangying/gitee-pages
+          personal_token: ${{ secrets.GITEE_TOKEN }}
           publish_branch: gh-pages-ubuntu-20.04
           publish_dir: ./test_projects/mdbook/book
           # external_repository: ''
           allow_empty_commit: true
           # keep_files: true
           # force_orphan: true
-          user_name: 'github-actions[bot]'
+          user_name: 'upcwangying'
           user_email: 'github-actions[bot]@users.noreply.github.com'
           # commit_message: ${{ github.event.head_commit.message }}
 
@@ -181,13 +185,14 @@ jobs:
         uses: ./
         with:
           # deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          gitee_token: ${{ secrets.GITEE_TOKEN }}
+          external_repository: upcwangying/gitee-pages
+          personal_token: ${{ secrets.GITEE_TOKEN }}
           publish_branch: gh-pages-ubuntu-22.04
           publish_dir: ./test_projects/mdbook/book
           # external_repository: ''
           allow_empty_commit: true
           # keep_files: true
           # force_orphan: true
-          user_name: 'github-actions[bot]'
+          user_name: 'upcwangying'
           user_email: 'github-actions[bot]@users.noreply.github.com'
           # commit_message: ${{ github.event.head_commit.message }}

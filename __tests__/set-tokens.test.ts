@@ -24,6 +24,7 @@ describe('setGithubToken()', () => {
   test('return remote url with GITEE_TOKEN gh-pages', () => {
     const expected = 'https://x-access-token:GITEE_TOKEN@gitee.com/owner/repo.git';
     const test = setGiteeToken(
+      'x-access-token',
       'GITEE_TOKEN',
       'owner/repo',
       'gh-pages',
@@ -37,6 +38,7 @@ describe('setGithubToken()', () => {
   test('return remote url with GITEE_TOKEN master', () => {
     const expected = 'https://x-access-token:GITEE_TOKEN@gitee.com/owner/repo.git';
     const test = setGiteeToken(
+      'x-access-token',
       'GITEE_TOKEN',
       'owner/repo',
       'master',
@@ -50,6 +52,7 @@ describe('setGithubToken()', () => {
   test('return remote url with GITEE_TOKEN gh-pages (RegExp)', () => {
     const expected = 'https://x-access-token:GITEE_TOKEN@gitee.com/owner/repo.git';
     const test = setGiteeToken(
+      'x-access-token',
       'GITEE_TOKEN',
       'owner/repo',
       'gh-pages',
@@ -63,6 +66,7 @@ describe('setGithubToken()', () => {
   test('throw error gh-pages-base to gh-pages-base (RegExp)', () => {
     expect(() => {
       setGiteeToken(
+        'x-access-token',
         'GITEE_TOKEN',
         'owner/repo',
         'gh-pages-base',
@@ -75,13 +79,22 @@ describe('setGithubToken()', () => {
 
   test('throw error master to master', () => {
     expect(() => {
-      setGiteeToken('GITEE_TOKEN', 'owner/repo', 'master', '', 'refs/heads/master', 'push');
+      setGiteeToken(
+        'x-access-token',
+        'GITEE_TOKEN',
+        'owner/repo',
+        'master',
+        '',
+        'refs/heads/master',
+        'push'
+      );
     }).toThrowError('You deploy from master to master');
   });
 
   test('throw error external repository with GITHUB_TOKEN', () => {
     expect(() => {
       setGiteeToken(
+        'x-access-token',
         'GITEE_TOKEN',
         'owner/repo',
         'gh-pages',
@@ -98,6 +111,7 @@ Use deploy_key or personal_token.
   test('return remote url with GITEE_TOKEN pull_request', () => {
     const expected = 'https://x-access-token:GITEE_TOKEN@gitee.com/owner/repo.git';
     const test = setGiteeToken(
+      'x-access-token',
       'GITEE_TOKEN',
       'owner/repo',
       'gh-pages',
@@ -112,7 +126,7 @@ Use deploy_key or personal_token.
 describe('setPersonalToken()', () => {
   test('return remote url with personal access token', () => {
     const expected = 'https://x-access-token:pat@gitee.com/owner/repo.git';
-    const test = setPersonalToken('pat', 'owner/repo');
+    const test = setPersonalToken('x-access-token', 'pat', 'owner/repo');
     expect(test).toMatch(expected);
   });
 });

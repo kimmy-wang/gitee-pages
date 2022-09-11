@@ -4,12 +4,15 @@ description: 'GitHub Action to deploy to Gitee Pages'
 author: 'kimmy214'
 runs:
   using: 'node12'
-  main: 'lib/main.js'
+  main: 'lib/index.js'
 branding:
   color: 'green'
   icon: 'upload-cloud'
 
 inputs:
+  username:
+    description: 'Set a gitee account name.'
+    required: true
   deploy_key:
     description: 'Set a SSH private key from repository secret value for pushing to the remote branch.'
     required: false
@@ -19,6 +22,9 @@ inputs:
   personal_token:
     description: 'Set a personal access token for pushing to the remote branch.'
     required: false
+  external_repository:
+    description: 'Set an external repository (owner/repo).'
+    required: true
   publish_branch:
     description: 'Set a target branch for deployment.'
     required: false
@@ -31,9 +37,6 @@ inputs:
     description: 'Set an destination subdirectory for deployment.'
     required: false
     default: ''
-  external_repository:
-    description: 'Set an external repository (owner/repo).'
-    required: false
   allow_empty_commit:
     description: 'If empty commits should be made to the publication branch'
     required: false

@@ -16,6 +16,7 @@ describe('setGiteeToken()', () => {
     process.env.GITEE_SERVER_URL = 'https://github.enterprise.server';
     const expected = 'https://x-access-token:GITEE_TOKEN@github.enterprise.server/owner/repo.git';
     const test = setGiteeToken(
+      'x-access-token',
       'GITEE_TOKEN',
       'owner/repo',
       'gh-pages',
@@ -31,7 +32,7 @@ describe('setPersonalToken()', () => {
   test('return remote url with personal access token', () => {
     process.env.GITEE_SERVER_URL = 'https://github.enterprise.server';
     const expected = 'https://x-access-token:pat@github.enterprise.server/owner/repo.git';
-    const test = setPersonalToken('pat', 'owner/repo');
+    const test = setPersonalToken('x-access-token', 'pat', 'owner/repo');
     expect(test).toMatch(expected);
   });
 });
