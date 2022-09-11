@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     tags:
-      - 'v3.*.*'
+      - 'v*'
 
 jobs:
   release:
@@ -13,4 +13,4 @@ jobs:
       # https://github.com/peaceiris/workflows/blob/main/create-release-npm/action.yml
       - uses: peaceiris/workflows/create-release-npm@v0.16.0
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
