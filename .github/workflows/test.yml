@@ -47,9 +47,10 @@ jobs:
         run: |
           node -v
           npm --version
+          yarn -v
           git --version
 
-      - run: npm ci --ignore-scripts
+      - run: yarn
 
       - name: npm audit
         if: startsWith(matrix.os, 'ubuntu-22.04')
@@ -85,7 +86,7 @@ jobs:
         if: ${{ github.ref == 'refs/heads/main' }}
         run: |
           npm uninstall lint-staged husky
-          git checkout package-lock.json package.json
+          git checkout yarn.lock package.json
 
       - name: Setup mdBook
         if: ${{ github.ref == 'refs/heads/main' }}
@@ -105,7 +106,7 @@ jobs:
         uses: ./
         with:
           # deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          gitee_token: ${{ secrets.GITEE_TOKEN }}
           # publish_branch: gh-pages
           publish_dir: ./test_projects/mdbook/book
           # external_repository: ''
@@ -115,7 +116,7 @@ jobs:
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
           # commit_message: ${{ github.event.head_commit.message }}
-          cname: 'actions-gh-pages.peaceiris.com'
+          cname: 'gitee-pages.kimmy.me'
 
       - name: Deploy
         if: |
@@ -123,8 +124,8 @@ jobs:
           github.ref == 'refs/heads/main' && github.event.repository.fork == false
         uses: ./
         with:
-          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          # github_token: ${{ secrets.GITHUB_TOKEN }}
+#          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          gitee_token: ${{ secrets.GITEE_TOKEN }}
           # personal_token: ${{ secrets.PERSONAL_TOKEN }}
           publish_branch: gh-pages-macos
           publish_dir: ./test_projects/mdbook/book
@@ -143,7 +144,7 @@ jobs:
         uses: ./
         with:
           # deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          gitee_token: ${{ secrets.GITEE_TOKEN }}
           # personal_token: ${{ secrets.PERSONAL_TOKEN }}
           publish_branch: gh-pages-windows
           publish_dir: ./test_projects/mdbook/book
@@ -162,7 +163,7 @@ jobs:
         uses: ./
         with:
           # deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          gitee_token: ${{ secrets.GITEE_TOKEN }}
           publish_branch: gh-pages-ubuntu-20.04
           publish_dir: ./test_projects/mdbook/book
           # external_repository: ''
@@ -180,7 +181,7 @@ jobs:
         uses: ./
         with:
           # deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          gitee_token: ${{ secrets.GITEE_TOKEN }}
           publish_branch: gh-pages-ubuntu-22.04
           publish_dir: ./test_projects/mdbook/book
           # external_repository: ''
