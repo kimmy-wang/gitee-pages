@@ -10,4 +10,4 @@ jobs:
     steps:
     - uses: actions/labeler@v4
       with:
-        repo-token: "${{ secrets.GH_PAT }}"
+        repo-token: "${{ secrets.GH_TOKEN }}"
