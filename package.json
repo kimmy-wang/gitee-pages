@@ -1,6 +1,6 @@
 {
   "name": "gitee-pages",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0",
   "description": "GitHub Actions for Gitee Pages",
   "main": "lib/index.js",
   "engines": {
