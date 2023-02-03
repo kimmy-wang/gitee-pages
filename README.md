@@ -10,19 +10,19 @@
 
 ```yaml
 - name: Deploy
-  uses: kimmy214/gitee-pages@v1
+  uses: kw214/gitee-pages@v1
   with:
-    external_repository: upcwangying/gitee-pages
+    external_repository: kw214/gitee-pages
     personal_token: ${{ secrets.GITEE_TOKEN }}
     # publish_branch: gh-pages
     publish_dir: ./public
     # allow_empty_commit: true
     # keep_files: true
     # force_orphan: true
-    user_name: 'upcwangying'
+    user_name: 'kw214'
     user_email: 'github-actions[bot]@users.noreply.github.com'
     # commit_message: ${{ github.event.head_commit.message }}
     cname: 'gitee-pages.kimmy.me'
 ```
 
-This [library](https://github.com/kimmy214/gitee-pages) is inspired by [actions-gh-pages](https://github.com/peaceiris/actions-gh-pages).
+This [library](https://github.com/kw214/gitee-pages) is inspired by [actions-gh-pages](https://github.com/peaceiris/actions-gh-pages).
